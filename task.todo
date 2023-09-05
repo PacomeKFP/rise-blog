@@ -1,0 +1,166 @@
+Rise-Blog-API:
+    Configuration du projet:
+        ✔ npm init @started(23-09-05 16:25) @done(23-09-05 16:25) @lasted(11s)
+        ✔ installation de express, dotenv, cors, slugify, jwt, bcryptjs @started(23-09-05 16:25) @done(23-09-05 16:30) @lasted(5m11s)
+        ✔ Configuration de l'application express avec router & express.json @started(23-09-05 16:30) @done(23-09-05 16:36) @lasted(6m10s)
+        ✔ Test de fonctionnement avec une home route @done(23-09-05 16:36)
+        ✔ Structure de base du projet: creation des dossiers et fichiers @done(23-09-05 16:39)
+        ✔ Configuration de l'acces à la base de donnée Compass: `rise-blog` @started(23-09-05 16:45) @done(23-09-05 16:55) @lasted(10m25s)
+        ✔ Test final: bd + Home route @done(23-09-05 16:59)
+
+        ✔ configuration de dotenv @done(23-09-05 17:35)
+
+    Configuration d'Insomnia:
+        ✔ Installation d'Insomnia @done(23-09-05 17:42)
+        ✔ Connexion d'un compte online @started(23-09-05 17:42) @done(23-09-05 17:43) @lasted(1m28s)
+        ✔ Creation de la collection de requettes: rise-blog @started(23-09-05 17:43) @done(23-09-05 17:44) @lasted(1m9s)
+        ✔ Creation du sous-environnement pour les variables: `Rise Blog Environment` @started(23-09-05 17:44) @done(23-09-05 17:46) @lasted(2m20s)
+        ✔ creation des varables d'env: `baseUrl`, @started(23-09-05 17:46) @done(23-09-05 17:46) @lasted(30s)
+        ✔ Ajout de la requette GET home & test d'insomnia @started(23-09-05 17:46) @done(23-09-05 17:49) @lasted(3m29s)
+
+    Configuration de Git-Github:
+        ✔ Creation du compte github @done(23-09-05 17:56)
+        ✔ Configuration de git (user.email, user.name) @done(23-09-05 17:56)
+        ✔ Connexion de github à VsCode @done(23-09-05 17:57)
+        ☐ Initiation du projet git (git init)
+        ☐ first commit sur un repo + branche @api
+
+    CRUD `topics`:
+        ☐ creation du model
+        Create :
+            ☐ creation de la route
+            ☐ Creation du controleur
+            ☐ Ajout du middleware d'upload de fichiers @critical(apres la mise en place du _fileUploadMiddleware_)
+        READ @All & @key[_id] :
+            ☐ creation de la route (readAll - byId)
+            ☐ ecriture des controleurs et renvoie de la reponse (readAll & byId) @attention: ne pas populate
+        UPDATE - @key[_id] (mise à jour du nom et/ou de la photo) :
+            ☐ creation de la route
+            ☐ creation du controller: ici on renvoie comme reponse les nouvelles infos
+            ☐ ajout du middleware d'upload de fichiers @critical(apres la mise en place du _fileUploadMiddleware_) 
+        DELETE @key[_id] :
+            ☐ creation de la route 
+            ☐ Creation du controleur: 
+                ☐ Suppression du lien (_id en topics) dans tous les articles enfants @high(apres creation de _article_)
+                ☐ suppression du document lié au `topic` en bd
+    
+    CRUD `comments`:
+        ☐ creation du model
+        Create :
+            ☐ creation de la route
+            ☐ Creation du controleur
+                ☐ Ajout du lien avec l'article concerné @high(apres la creation de _article_) 
+        READ (All & byId & byAuthor):
+            ☐ creation de la route (readAll - byId)
+            ☐ ecriture des controleurs et renvoie de la reponse (readAll & byId) @populate: author
+
+            ☐ get comments by author @key[authorId]  @high(Will use user_Id contaided contained in req object and extracted from bearer token  )
+        UPDATE - @key[_id] (contenu du commentaire) :
+            ☐ creation de la route
+            ☐ creation du controleur: ici on renvoie comme reponse les nouvelles infos
+        DELETE - @key[_id] :
+            ☐ creation de la route 
+            ☐ Creation du controleur: 
+                ☐ Suppression du lien _id l'article en lien @high(apres creation de _article_)
+                ☐ suppression du document lié au `comments` en bd
+    
+    CRUD `article`:
+        ☐ creation du model 
+        Create:
+            ☐ creation de la route
+            ☐ Creation du controleur
+            ☐ ajout du lien vers l'auteur de l'article @high(apres creation de _user_) 
+        READ (All & byId & byAuthor) :
+            ☐ creation de la route (readAll - byId)
+            ☐ écriture des controleurs et renvoie de la reponse (readAll & byId) @populate: author
+
+            ☐ get artcles by author @key[authorId]  @exercise @high(will use token userId extracted in token require _Authmiddleware_)
+        UPDATE - @key[_id] (contenu de l'article, image, titre, les sujets) :
+            ☐ creation de la route
+            ☐ creation du controleur: ici on renvoie comme reponse les nouvelles infos
+            ☐ Ajouter le middleware d'upload de fichiers pour le landing @critical(apres implementation de _fileUploadMiddleware_) 
+            
+            Routes Speciales:
+                il s'agit de routes qui n'entrent pas dans la logique pure du modele REST
+                ☐ Ajouter un like @patch(`/like/:{id}`)  @created(23-09-04 07:00)
+                ☐ Ajouter aux favoris @patch(`/favorite/:{id}`) @high(require _user model_ to be completed) 
+                ☐ Routes des filtres pour la pagination @critical(supplement) 
+        
+        DELETE - @key[_id] :
+            ☐ creation de la route 
+            ☐ Creation du controleur: 
+                ☐ Suppression de tous les commentaires liés à l'article 
+                ☐ Suppression du lien avec les `topics` parents
+                ☐ Suppression du lien avec l'auteur (pull article in userModel) 
+                ☐ suppression du document lié à `article` en bd
+    
+    CRUD `user`:
+        ☐ creation du model 
+        Create:
+            ☐ creation de la route
+            ☐ Creation du controleur
+
+            ☐ Ajout d'une photo de profil @exercise 
+        READ (All & byId) :
+            ☐ creation de la route (readAll - byId)
+            ☐ écriture des controleurs et renvoie de la reponse (readAll & byId)
+        UPDATE - @key[_id] (nom de l'utilisateur et photo de profil)  @exercise:
+            ☐ creation de la route
+            ☐ creation du controleur: ici on renvoie comme reponse les nouvelles infos
+            
+            ☐ mise à jour de la photo de profil  @exercise 
+        DELETE - @key[_id] :
+            ☐ creation de la route 
+            ☐ Creation du controleur:
+                ☐ Suppression de tous les commentaires liés à l'utilisateur 
+                ☐ Suppression de tous les likes liés à l'utilisateur (pull _id from likes in articleModel ) 
+                ☐ Suppression de tous les articles liés à l'utilisateur 
+                ☐ Suppression de toute presence favori d'un article (pull favorites in articleModel) 
+                ☐ suppression du document lié à `user` en bd
+    
+    Authentification:
+        Inscription:
+            ☐ creation de la route @post(`/register`)
+            ☐ creation de la methode statique de pre-save dans userSchema(bcryptjs & password encryption)
+            ☐ appel du controller de @login apres inscription
+        Connexion:
+            ☐ creation de la route @post(`/login`)
+            ☐ creation de la methode statique de pre-login pour verifier le password et l'email
+            ☐ generer et renvoyer un token contenant _id du user
+            ☐ ecriture de la des utils pour la crypto @factultatif - @refactoring
+            ☐ ecriture du controleur qui renvoie le bearer token if success 
+        Middleware d'authentification @authMiddleware:
+            Ce middleware permettra de proteger les routes qui alterent la base de donéée (post, patch, delete)
+            Il va scanner le header de la requette et reccuperera le bearer token qui y sera present, 
+            Ensuite il verifie la validité (expiration) du access token 
+            ainsi que l'authencite de la donnée qui y est stockée (_id du user)
+            à la fin il stocke l'utilisateur dans les cookies de la requette entrante, mise en cache
+            ☐ recupperer le bearer token dans le header de la requette
+            ☐ verifier que le token est toujours valide avec @bcryptjs
+            ☐ verifier que le payload du token (decoded_data) est un user_id valide
+            ☐ reccuperer l'utilisateur associé au token
+            ☐ ajouter les données de l'utilisateur aux cookies de la requette, dans le champ _user_
+
+        
+        Reinitialisation du mot de passe: 
+            @Advanced - @search - @SeandingMailsWithNodeJS
+    
+    Errors Handling - Gestiond des erreurs:
+        ici il sera question d'ecrire un ensmble de scripts pour prendre en charge
+         et gerer les diffierentes erreurs qui se presenteront afin de constituer des reponses correctes.
+         Pour cela on ecrira un bloc
+
+        @ControllerWrapper - @JavaScriptOrientedObjectProgramming
+
+        
+        
+        
+        
+
+
+
+        
+
+
+         
+
