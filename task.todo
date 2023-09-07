@@ -22,30 +22,30 @@ Rise-Blog-API:
         ✔ Creation du compte github @done(23-09-05 17:56)
         ✔ Configuration de git (user.email, user.name) @done(23-09-05 17:56)
         ✔ Connexion de github à VsCode @done(23-09-05 17:57)
-        ☐ Initiation du projet git (git init)
-        ☐ first commit sur un repo + branche @api
+        ✔ Initiation du projet git (git init) @done(23-09-05 18:07)
+        ✔ first commit sur un repo + branche @api @done(23-09-05 18:07)
 
     CRUD `topics`:
-        ☐ creation du model
+        ✔ creation du model @done(23-09-07 18:40)
         Create :
-            ☐ creation de la route
+            ✔ creation de la route @started(23-09-07 19:22) @done(23-09-07 19:31) @lasted(9m11s)
             ☐ Creation du controleur
             ☐ Ajout du middleware d'upload de fichiers @critical(apres la mise en place du _fileUploadMiddleware_)
         READ @All & @key[_id] :
-            ☐ creation de la route (readAll - byId)
+            ✔ creation de la route (readAll - byId) @done(23-09-07 19:37)
             ☐ ecriture des controleurs et renvoie de la reponse (readAll & byId) @attention: ne pas populate
         UPDATE - @key[_id] (mise à jour du nom et/ou de la photo) :
-            ☐ creation de la route
+            ✔ creation de la route @done(23-09-07 19:37)
             ☐ creation du controller: ici on renvoie comme reponse les nouvelles infos
             ☐ ajout du middleware d'upload de fichiers @critical(apres la mise en place du _fileUploadMiddleware_) 
         DELETE @key[_id] :
-            ☐ creation de la route 
+            ✔ creation de la route @done(23-09-07 19:37)
             ☐ Creation du controleur: 
                 ☐ Suppression du lien (_id en topics) dans tous les articles enfants @high(apres creation de _article_)
                 ☐ suppression du document lié au `topic` en bd
     
     CRUD `comments`:
-        ☐ creation du model
+        ✔ creation du model @done(23-09-07 18:44)
         Create :
             ☐ creation de la route
             ☐ Creation du controleur
@@ -65,7 +65,7 @@ Rise-Blog-API:
                 ☐ suppression du document lié au `comments` en bd
     
     CRUD `article`:
-        ☐ creation du model 
+        ✔ creation du model @started(23-09-07 18:44) @done(23-09-07 18:54) @lasted(10m9s)
         Create:
             ☐ creation de la route
             ☐ Creation du controleur
@@ -95,7 +95,7 @@ Rise-Blog-API:
                 ☐ suppression du document lié à `article` en bd
     
     CRUD `user`:
-        ☐ creation du model 
+        ✔ creation du model @started(23-09-07 18:54) @done(23-09-07 19:01) @lasted(7m49s)
         Create:
             ☐ creation de la route
             ☐ Creation du controleur
@@ -145,14 +145,18 @@ Rise-Blog-API:
         Reinitialisation du mot de passe: 
             @Advanced - @search - @SeandingMailsWithNodeJS
     
-    Errors Handling - Gestiond des erreurs:
+    Errors Handling - Gestion des erreurs:
         ici il sera question d'ecrire un ensmble de scripts pour prendre en charge
          et gerer les diffierentes erreurs qui se presenteront afin de constituer des reponses correctes.
          Pour cela on ecrira un bloc
 
         @ControllerWrapper - @JavaScriptOrientedObjectProgramming
 
-        
+    
+    Validation des requettes:
+        Ajout d'un middleware pour valider le corps des requettes avec Joi 
+        ceci permettra de se rassurer que pour chaque route on connait exactement le contenu du corps
+        cela securise un peu plus l'API
         
         
         
