@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const topicSchema = new mongoose.Schema({
-  label: {
+  label: { 
     type: String,
     required: true,
     unique: true,
