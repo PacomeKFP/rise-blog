@@ -29,20 +29,20 @@ Rise-Blog-API:
         ✔ creation du model @done(23-09-07 18:40)
         Create :
             ✔ creation de la route @started(23-09-07 19:22) @done(23-09-07 19:31) @lasted(9m11s)
-            ☐ Creation du controleur
+            ✔ Creation du controleur @started(23-09-13 13:51) @done(23-09-13 14:10) @lasted(19m8s)
             ☐ Ajout du middleware d'upload de fichiers @critical(apres la mise en place du _fileUploadMiddleware_)
         READ @All & @key[_id] :
             ✔ creation de la route (readAll - byId) @done(23-09-07 19:37)
-            ☐ ecriture des controleurs et renvoie de la reponse (readAll & byId) @attention: ne pas populate
+            ✔ ecriture des controleurs et renvoie de la reponse (readAll & byId) @attention: ne pas populate @started(23-09-13 14:22) @done(23-09-13 14:27) @lasted(5m48s)
         UPDATE - @key[_id] (mise à jour du nom et/ou de la photo) :
             ✔ creation de la route @done(23-09-07 19:37)
-            ☐ creation du controller: ici on renvoie comme reponse les nouvelles infos
+            ✔ creation du controller: ici on renvoie comme reponse les nouvelles infos @done(23-09-13 14:42)
             ☐ ajout du middleware d'upload de fichiers @critical(apres la mise en place du _fileUploadMiddleware_) 
         DELETE @key[_id] :
             ✔ creation de la route @done(23-09-07 19:37)
-            ☐ Creation du controleur: 
+            ☐ Creation du controleur:
                 ☐ Suppression du lien (_id en topics) dans tous les articles enfants @high(apres creation de _article_)
-                ☐ suppression du document lié au `topic` en bd
+                ✔ suppression du document lié au `topic` en bd @done(23-09-13 14:42)
     
     CRUD `comments`:
         ✔ creation du model @done(23-09-07 18:44)
