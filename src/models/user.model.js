@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const validateEmail = (email) => {
   return String(email)
     .toLowerCase()
@@ -9,49 +8,50 @@ const validateEmail = (email) => {
     );
 };
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    validate: {
-      validator: validateEmail,
-      message: props => `${props.value} is not a valid email`
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-  },
-  password: {
-    type: String,
-    required: true,
-    select: false,
-  },
-  content: {
-    type: String,
-    required: true,
-  },
-  articles: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Articles",
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      validate: {
+        validator: validateEmail,
+        message: (props) => `${props.value} is not a valid email`,
+      },
     },
-  ],
-  favorites: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Articles",
+    password: {
+      type: String,
+      required: true,
+      select: false,
     },
-  ],
-  likes: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Articles",
+    content: {
+      type: String,
+      required: true,
     },
-  ],
-  
-});
+    articles: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Articles",
+      },
+    ],
+    favorites: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Articles",
+      },
+    ],
+    likes: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Articles",
+      },
+    ],
+  },
+);
 
 const UserModel = new mongoose.model("Users", userSchema);
 

@@ -47,47 +47,47 @@ Rise-Blog-API:
     CRUD `comments`:
         ✔ creation du model @done(23-09-07 18:44)
         Create :
-            ☐ creation de la route
-            ☐ Creation du controleur
+            ✔ creation de la route @started(23-09-13 19:26) @done(23-09-13 19:37) @lasted(11m34s)
+            ✔ Creation du controleur @done(23-09-13 20:14)
                 ☐ Ajout du lien avec l'article concerné @high(apres la creation de _article_) 
         READ (All & byId & byAuthor):
-            ☐ creation de la route (readAll - byId)
-            ☐ ecriture des controleurs et renvoie de la reponse (readAll & byId) @populate: author
+            ✔ creation de la route (readAll - byId) @started(23-09-13 19:26) @done(23-09-13 19:39) @lasted(13m12s)
+            ✔ ecriture des controleurs et renvoie de la reponse (readAll & byId) @populate: author @done(23-09-13 20:36)
 
             ☐ get comments by author @key[authorId]  @high(Will use user_Id contaided contained in req object and extracted from bearer token  )
         UPDATE - @key[_id] (contenu du commentaire) :
-            ☐ creation de la route
-            ☐ creation du controleur: ici on renvoie comme reponse les nouvelles infos
+            ✔ creation de la route @started(23-09-13 19:26) @done(23-09-13 19:37) @lasted(11m37s)
+            ✔ creation du controleur: ici on renvoie comme reponse les nouvelles infos @done(23-09-13 20:36)
         DELETE - @key[_id] :
-            ☐ creation de la route 
+            ✔ creation de la route @started(23-09-13 19:26) @done(23-09-13 19:37) @lasted(11m42s)
             ☐ Creation du controleur: 
                 ☐ Suppression du lien _id l'article en lien @high(apres creation de _article_)
-                ☐ suppression du document lié au `comments` en bd
+                ✔ suppression du document lié au `comments` en bd @done(23-09-13 20:36)
     
     CRUD `article`:
         ✔ creation du model @started(23-09-07 18:44) @done(23-09-07 18:54) @lasted(10m9s)
         Create:
-            ☐ creation de la route
-            ☐ Creation du controleur
+            ✔ creation de la route @done(23-09-13 20:43)
+            ✔ Creation du controleur @done(23-09-13 20:55)
             ☐ ajout du lien vers l'auteur de l'article @high(apres creation de _user_) 
         READ (All & byId & byAuthor) :
-            ☐ creation de la route (readAll - byId)
+            ✔ creation de la route (readAll - byId) @done(23-09-13 20:43)
             ☐ écriture des controleurs et renvoie de la reponse (readAll & byId) @populate: author
 
             ☐ get artcles by author @key[authorId]  @exercise @high(will use token userId extracted in token require _Authmiddleware_)
         UPDATE - @key[_id] (contenu de l'article, image, titre, les sujets) :
-            ☐ creation de la route
+            ✔ creation de la route @done(23-09-13 20:43)
             ☐ creation du controleur: ici on renvoie comme reponse les nouvelles infos
             ☐ Ajouter le middleware d'upload de fichiers pour le landing @critical(apres implementation de _fileUploadMiddleware_) 
             
-            Routes Speciales:
-                il s'agit de routes qui n'entrent pas dans la logique pure du modele REST
-                ☐ Ajouter un like @patch(`/like/:{id}`)  @created(23-09-04 07:00)
-                ☐ Ajouter aux favoris @patch(`/favorite/:{id}`) @high(require _user model_ to be completed) 
-                ☐ Routes des filtres pour la pagination @critical(supplement) 
+        Routes Speciales: @high(apres user)
+            il s'agit de routes qui n'entrent pas dans la logique pure du modele REST
+            ☐ Ajouter un like @patch(`/like/:{id}`)  @created(23-09-04 07:00)
+            ☐ Ajouter aux favoris @patch(`/favorite/:{id}`) @high(require _user model_ to be completed) 
+            ☐ Routes des filtres pour la pagination @critical(supplement) 
         
         DELETE - @key[_id] :
-            ☐ creation de la route 
+            ✔ creation de la route @done(23-09-13 20:44)
             ☐ Creation du controleur: 
                 ☐ Suppression de tous les commentaires liés à l'article 
                 ☐ Suppression du lien avec les `topics` parents
@@ -153,7 +153,7 @@ Rise-Blog-API:
         @ControllerWrapper - @JavaScriptOrientedObjectProgramming
 
     
-    Validation des requettes:
+    Validation des requettes: @JOI
         Ajout d'un middleware pour valider le corps des requettes avec Joi 
         ceci permettra de se rassurer que pour chaque route on connait exactement le contenu du corps
         cela securise un peu plus l'API
